@@ -55,7 +55,7 @@ class MainActivity : ComponentActivity() {
                         )
                         Spacer(modifier = Modifier.height(30.dp))
 
-                        PinkLabelTextField(
+                        pinkLabelTextField(
                             label = "毎月の生活費",
                             onValueChange = {},
                             placeholder = "25",
@@ -63,15 +63,15 @@ class MainActivity : ComponentActivity() {
                             amount = "万円"
                         )
 
-                        PinkLabelTextField(
+                        pinkLabelTextField(
                             label = "毎月の積立額",
                             onValueChange = {},
-                            placeholder = "10",
+                            placeholder = "%",
                             value = "",
                             amount = "万円"
                         )
 
-                        PinkLabelTextField(
+                        pinkLabelTextField(
                             label = "資産運用利率",
                             onValueChange = {},
                             placeholder = "4",
@@ -148,7 +148,7 @@ class MainActivity : ComponentActivity() {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PinkLabelTextField(
+fun pinkLabelTextField(
     label: String,
     value: String,
     onValueChange: (Int) -> Unit,
@@ -171,8 +171,14 @@ fun PinkLabelTextField(
             colors = TextFieldDefaults.textFieldColors(containerColor = Color.Transparent),
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
             singleLine = true,
-            placeholder = { Text(text = placeholder) },
-            modifier = Modifier.width(200.dp),
+            placeholder = {
+                Text(
+                    text = placeholder,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.width(180.dp)
+                )
+            },
+            modifier = Modifier.width(180.dp),
         )
         Spacer(modifier = Modifier.width(10.dp))
         Text(
